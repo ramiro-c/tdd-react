@@ -69,25 +69,20 @@ describe('<JokeGenerator />', () => {
     expect(getByText(jokeText)).toBeInTheDocument();
   });
 
-  test("Validate 'a' redirection path to TDD course", () => {
+  // data driven test
+  test.each`
+    text                            | url 
+    ${'TDD - Course'}               | ${URL_TDD_COURSE_REPO}
+    ${'Project GitHub repository'}  | ${URL_GITHUB_REPO}
+  `("Validate 'a' redirection path to $text is $url", ({ text, url }) => {
     const { container, getByText } = render(<JokeGenerator />);
 
     expect(container).toBeDefined();
- 
-    const link = getByText("JokeGenerator");
+
+    const link = getByText(text);
 
     expect(link).toHaveAttribute("href");
-    expect(link.getAttribute("href")).toBe(URL_TDD_COURSE_REPO);
+    expect(link.getAttribute("href")).toBe(url);
   });
-  
-  test("Validate 'a' redirection path to GithHub repository", () => {
-    const { container, getByText } = render(<JokeGenerator />);
 
-    expect(container).toBeDefined();
- 
-    const link = getByText("Project GitHub repository");
-
-    expect(link).toHaveAttribute("href");
-    expect(link.getAttribute("href")).toBe(URL_GITHUB_REPO);
-  });
 });

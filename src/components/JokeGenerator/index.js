@@ -32,14 +32,12 @@ const JokeGenerator = () => {
       <div className="hero is-fullheight pb-6">
         <div className="hero-body">
           <div className="content has-text-centered mx-auto">
-            <h1 className="mb-5" style={h1Style}>
-              Welcome to <br />
-              <strong className="is-underlined">
-                <a href={URL_TDD_COURSE_REPO}>
-                  JokeGenerator
-                </a>
-              </strong>
+            <h1 className="mb-0" style={h1Style}>
+              Welcome to <strong>JokeGenerator</strong>
             </h1>
+            <p className="mb-5 is-size-6" >
+              from <a href={URL_TDD_COURSE_REPO} className="is-underlined">TDD - Course</a>
+            </p>
 
             {!joke && !loading && <p>You haven't loaded any joke yet!</p>}
             {loading && <p>Loading...</p>}
@@ -48,13 +46,13 @@ const JokeGenerator = () => {
             <button
               onClick={() => loadJoke()}
               type="button"
-              className="button is-primary mt-3">
+              className="button is-primary mt-3 mb-1">
               Load a random joke
             </button>
             <br />
-            <a href={URL_GITHUB_REPO} className="mt-3 is-underlined is-size-7">
+            <a href={URL_GITHUB_REPO} className="is-underlined is-size-7">
               Project GitHub repository
-              </a>
+            </a>
           </div>
         </div>
       </div>
